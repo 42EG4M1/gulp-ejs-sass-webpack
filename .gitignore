@@ -1,0 +1,11 @@
+node_modules
+.sass-cache
+*.log
+.DS_Store
+
+dist
+_dump
+src/inc/_*
+_sample.html
+
+faviconData.json
