@@ -1,0 +1,46 @@
+// ====================
+// * _closeBtn
+// ====================
+
+.m-closeBtn {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 42px;
+    height: 4px;
+    background: $color-line2;
+    border-radius: 2px;
+    transition: transform .3s ease;
+    transform: translate(-50%, -50%);
+  }
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  &:hover::before {
+    transform: translate(-50%, -50%) rotate(135deg);//225
+  }
+  &:hover::after {
+    transform: translate(-50%, -50%) rotate(45deg);//135
+  }
+}
+
+
+//== media query
+@media #{$mq1365} {
+  .m-closeBtn {
+    display: block;
+  }
+}

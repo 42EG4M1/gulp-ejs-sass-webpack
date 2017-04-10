@@ -1,0 +1,151 @@
+// ====================
+// * _slider
+// ====================
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+  &__container {
+    position: relative;
+    display: block;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba($color-bk-link3, .7);
+      transition: $transition-base;
+      visibility: hidden;
+      z-index: 1;
+      opacity: 0;
+    }
+    &:hover::after {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  &__lists {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    height: 70px;
+    z-index: 2;
+  }
+  &__ttl {
+    span {
+      padding: 10px 16px;
+      font-size: 11px;
+      color: $color-text-w;
+      background: rgba($color-bk-link3, .9);
+    }
+  }
+  &__contents {
+    span {
+      padding: 10px 16px;
+      font-size: 14px;
+      color: $color-text-w;
+      background: rgba($color-bk-link3, .9);
+    }
+  }
+}
+
+
+//== swiper
+.swiper-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.swiper-slide {
+}
+
+.swiper-pagination-bullet-active {
+  background: $color-bk-block1;
+}
+
+.swiper-button-next {
+  background: none;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 32px;
+    width: 20px;
+    height: 20px;
+    border: 3px solid $color-bk-link1;
+    border-top: none;
+    border-left: none;
+    transform: rotate(-45deg);
+    transition: $transition-base;
+  }
+  &:hover::before {
+    border-color: $color-bk-hover1;
+  }
+}
+
+.swiper-button-prev {
+  background: none;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 32px;
+    width: 20px;
+    height: 20px;
+    border: 3px solid $color-bk-link1;
+    border-bottom: none;
+    border-right: none;
+    transform: rotate(-45deg);
+    transition: $transition-base;
+  }
+  &:hover::before {
+    border-color: $color-bk-hover1;
+  }
+}
+
+
+//== media query
+@media #{$mq600} {
+  .slider {
+    &__lists {
+      bottom: calc(50% - 28px);
+      right: auto;
+      left: 10px;
+      height: 56px;
+    }
+    &__ttl {
+      span {
+        padding: 5px 10px;
+        font-size: 10px;
+      }
+    }
+    &__contents {
+      span {
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+    }
+  }
+  .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 0;
+  }
+  .swiper-button-next {
+    &::before {
+      display: none;
+    }
+  }
+  .swiper-button-prev {
+    &::before {
+      display: none;
+    }
+  }
+}

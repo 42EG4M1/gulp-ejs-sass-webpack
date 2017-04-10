@@ -1,0 +1,77 @@
+// ====================
+// * _localNav
+// ====================
+
+.localNav {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 30px 20px;
+  background: $color-bk-block1;
+  &__inner {
+    width: 100%;
+    max-width: 900px;
+    height: 100%;
+    margin: 0 auto;
+  }
+}
+
+.localNav__lists {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  li {
+    width: 100%;
+    max-width: 150px;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 150px;
+      height: 40px;
+      font-family: $font-family-mon;
+      font-size: 11px;
+      color: $color-text-w;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: $transition-base;
+      &:hover {
+        color: $color-text-hover1;
+      }
+    }
+  }
+}
+
+
+//== media query
+@media #{$mq500} {
+  .localNav {
+    padding: 30px 10px;
+  }
+  .localNav__lists {
+    li {
+      a {
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+@media #{$mq400} {
+  .localNav {
+    padding: 0 10px;
+  }
+  .localNav__lists {
+    flex-wrap: wrap;
+    li {
+      width: auto;
+      max-width: none;
+      a {
+        width: 100px;
+        max-width: none;
+        height: 50px;
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+// ====================
+// * _header-member
+// ====================
+
+.header__member {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 25%;
+  max-width: 450px;
+  &-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: $color-bk-link1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: $transition-base;
+    .m-icon {
+      width: 21px;
+      height: 20px;
+      fill: $color-bk-main;
+    }
+  }
+  &-lists {
+    box-sizing: border-box;
+    position: absolute;
+    top: 42px;
+    right: 0;
+    width: 164px;
+    padding: 8px 16px;
+    background: $color-bk-main;
+    box-shadow: 0 4px 10px -2px rgba($color-bk-block2, .3);
+    transition: $transition-fast;
+    transform: translateY(10px);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 10;
+    &::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      background: $color-bk-main;
+      transform: rotate(45deg);
+    }
+    li {
+      text-align: center;
+      a {
+        display: block;
+        padding: 5px 0;
+        font-size: 12px;
+        transition: color .5s ease;
+      }
+    }
+  }
+  &-list--end {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid $color-line1;
+  }
+  &-account {
+    position: relative;
+    &:hover {
+      .header__member-lists {
+        transform: translateY(0);
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+//== media query
+// @media #{$mq1100} {
+//   // .header__member {
+//   //   // margin-right: 10px;
+//   // }
+//   .is-fixed {
+//     .header__member {
+//       // margin-right: 10px;
+//       &-icon {
+//         width: 30px;
+//         height: 30px;
+//         .m-icon {
+//           width: 17px;
+//           height: 16px;
+//         }
+//       }
+//       &-lists {
+//         top: 32px;
+//         right: -5px;
+//       }
+//     }
+//   }
+// }
+
+// @media #{$mq400} {
+//   .header__member {
+//     &-icon {
+//       width: 30px;
+//       height: 30px;
+//       .m-icon {
+//         width: 17px;
+//         height: 16px;
+//       }
+//     }
+//     &-lists {
+//       top: 32px;
+//       right: -5px;
+//     }
+//   }
+// }

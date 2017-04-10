@@ -1,0 +1,180 @@
+// ====================
+// * _cardCompany
+// ====================
+
+.c-card--company {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  // margin-top: 32px; ieのバグがあるのでpadding-topでマージンをとっている
+  padding-top: 32px;
+  &__container {
+    position: relative;
+    display: block;
+    width: calc(50% - 20px);// 350px margin 40px
+    // height: 100%; safariで表示されなくなる
+    margin-bottom: 40px;
+    color: $color-text-main;
+    transition: $transition-base;
+    background: $color-bk-main;
+    // overflow: hidden;
+    &:nth-last-child(2),
+    &:nth-last-child(1) {
+      margin-bottom: 0;
+    }
+    &:hover {
+      color: $color-text-main;
+      background: rgba($color-bk-link1, .1);
+    }
+    // .js-wave {
+    //   position: absolute;
+    //   width: 50px;
+    //   height: 50px;
+    //   margin-left: -25px;
+    //   margin-top: -25px;
+    //   border-radius: 50%;
+    //   background: $color-main;
+    //   animation: inAnim 1.5s ease forwards;
+    //   z-index: -1;
+    // }
+  }
+}
+// @keyframes inAnim {
+//   0% {transform: scale(1); opacity: .4}
+//   100% {transform: scale(30); opacity: 0;}
+// }
+
+.c-card--company__item {
+  display: flex;
+  flex-direction: column;
+  &-details {
+    box-sizing: border-box;
+    padding: 24px 24px 0;
+    border: 1px solid $color-line1;
+    border-top: none;
+  }
+  &-thumb {
+    order: -1;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    &::before {
+      content: "";
+      display: block;
+      padding-top: 50%;
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      max-width: 100%;
+    }
+  }
+}
+
+.c-card--company__ttl {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.c-card--company__logo {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: 24px;
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 0 5px 15px -3px rgba(0,0,0,.3);
+  z-index: 1;
+}
+
+.c-card--company__content {
+  margin: 16px 0;
+  text-align: justify;
+}
+
+.c-card--company__desc {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  font-size: 10px;
+  color: $color-text-sub1;
+  border-top: 1px solid $color-line1;
+  overflow: hidden;
+  &-i {
+    white-space: nowrap;
+  }
+  &-i:not(:first-child) {
+    position: relative;
+    margin-left: 16px;
+    &::before {
+      content: '/';
+      position: absolute;
+      top: 0;
+      left: -10px;
+    }
+  }
+}
+
+
+//== media query
+@media #{$mq820} {
+  .c-card--company {
+    &__container {
+      width: calc(50% - 10px);// 350px margin 20px
+    }
+  }
+  .c-card--company__logo {
+    top: calc(50% - 40px);
+    width: 80px;
+    height: 80px;
+  }
+  .c-card--company__ttl {
+    font-size: 15px;
+  }
+  .c-card--company__content {
+    font-size: 12px;
+  }
+}
+
+@media #{$mq600} {
+  .c-card--company {
+    flex-direction: column;
+    justify-content: flex-start;
+    &__container {
+      width: 100%;
+      &:nth-last-child(2) {
+        margin-bottom: 40px;
+      }
+    }
+  }
+  .c-card--company__desc {
+    flex-wrap: wrap;
+  }
+  .c-card--company__logo {
+    top: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media #{$mq400} {
+  .c-card--company__item {
+    &-details {
+      padding: 16px 16px 0;
+    }
+  }
+  .c-card--company__logo {
+    left: 16px;
+  }
+  .c-card--company__ttl {
+    font-size: 14px;
+  }
+}

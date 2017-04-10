@@ -1,211 +1,373 @@
-// header
-
+// ====================
+// * _header
+// ====================
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
   width: 100%;
-  height: 40px;
-  line-height: 40px;
-  padding: 0 40px;
-  background: $color-background-main;
-  &__ttl {
-    width: 50%;
-    font-family: $font-family-lato;
-    font-weight: 300;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    a {
-      color: $color-logo;
-      transition: $transition-base;
-      &:hover {
-        color: $color-logo-hover;
-      }
-    }
-    span {
-      font-weight: 700;
+  height: 100px;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100px;
+    padding: 0 40px;
+    background: rgba($color-bk-main, .9);
+    transition: $transition-base;
+    z-index: 9;
+  }
+}
+
+.header__ttl {
+  display: flex;
+  align-items: center;
+  width: 25%;
+  max-width: 450px;
+  &-logo {
+    display: block;
+    height: 40px;
+  }
+  &-svg {
+    width: 212px;
+    height: 40px;
+    transition: $transition-base;
+    transform-origin: left top;
+    a:hover & {
+      opacity: .8;
     }
   }
-  &__nav {
-    width: 50%;
-    &-lists {
-      display: flex;
-      justify-content: flex-end;
-      li {
+  span {
+    margin-left: 24px;
+    font-size: 10px;
+    color: $color-text-sub1;
+    > br.is-hidden {
+      display: none;
+    }
+  }
+}
+
+.header__nav {
+  width: calc(100% - 900px);
+  &-lists {
+    display: flex;
+    justify-content: center;
+    li {
+      position: relative;
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
         height: 40px;
-        margin-left: 20px;
-        &:first-child {
-          margin-left: 0;
+        font-size: 12px;
+        transition: $transition-base;
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: -10px;
+          right: 50px;
+          width: 0;
+          height: 1px;
+          margin: 0 auto;
+          background: $color-line1;
+          transition: width .4s ease;
         }
+        &:hover::before {
+          width: 20px;
+          left: 50px;
+          right: auto;
+        }
+      }
+      // &.current a {
+      //   &::before {
+      //     width: 20px;
+      //     left: 50px;
+      //     right: auto;
+      //   }
+      // }
+    }
+  }
+}
+
+.header__account {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 25%;
+  max-width: 450px;
+  &-login {
+    margin-right: 24px;
+    a {
+      display: block;
+      color: $color-main;
+      font-size: 12px;
+      transition: $transition-base;
+      &:hover {
+        color: $color-text-hover1;
+      }
+    }
+  }
+  &-register {
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 120px;
+      height: 40px;
+      font-size: 12px;
+      color: $color-text-link2;
+      background: $color-bk-link1;
+      transition: $transition-base;
+      &:hover {
+        background: $color-bk-hover1;
+      }
+    }
+  }
+}
+
+
+//== is-fixed
+.is-fixed {
+  .header {
+    &__inner {
+      height: 60px;
+    }
+  }
+  .header__ttl {
+    &-logo {
+      height: 30px
+    }
+    &-svg {
+      transform: scale(.75);
+      //== width: 159px;
+      //== height: 30px;
+    }
+    span {
+      display: none;
+    }
+  }
+  .header__account {
+    &-register {
+      a {
+        height: 32px;
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+
+//== media query
+@media #{$mq1730} {
+  .header {
+    &__inner {
+      padding: 0 20px;
+    }
+  }
+  .header__ttl {
+    span {
+      > br.is-hidden {
+        display: block;
+      }
+    }
+  }
+}
+
+@media #{$mq1440} {
+  .header__ttl {
+    span {
+      display: none;
+    }
+  }
+}
+
+@media #{$mq1100} {
+  .header__nav {
+    &-lists {
+      li {
         a {
-          display: block;
-          color: $color-text-main;
-          text-transform: uppercase;
-          font-family: $font-family-q-sans;
+          width: 100px;
+          height: 60px;
           font-size: 11px;
-          letter-spacing: 1px;
-          transition: $transition-base;
-          &:hover {
-            color: $color-hover;
+          &::before {
+            display: none;
           }
         }
       }
     }
   }
-  &:before,
-  &:after {
-    content: "";
-    position: fixed;
-    top: 0;
-    width: 40px;
-    height: 100%;
-    background: $color-background-main;
-    z-index: 1;
-  }
-  &:before {
-    left: 0;
-  }
-  &:after {
-    right: 0;
-  }
-}
-
-
-
-.is-active {
-  .header {
-    &__ttl {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: calc(-50% + 20px);
-      width: 100%;
-      height: 40px;
-      margin: auto 0;
-      text-align: center;
-      transform: rotate(-90deg);
-      z-index: 2;
-    }
-    &__nav {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      right: calc(-50% + 20px);
-      width: 100%;
-      height: 40px;
-      margin: auto 0;
-      text-align: center;
-      transform: rotate(90deg);
-      z-index: 2;
-      &-lists {
-        justify-content: center;
+  .header__account {
+    &-login {
+      margin-right: 10px;
+      a {
+        font-size: 12px;
       }
     }
   }
 }
 
-
-
-// media query
-@media #{$mq768} {
-.header {
-  padding: 0 10px;
-  &__ttl {
-    width: auto;
-    flex: 1 0 250px;
-  }
-  &__nav {
-    width: auto;
-    flex: 1 0 40px;
-  }
-  &:before,
-  &:after {
-    width: 10px;
-  }
-}
-.is-active {
+@media #{$mq1000} {
   .header {
-    &__ttl {
+    &__inner {
       position: static;
-      transform: none;
-    }
-    &__nav {
-      position: static;
-      transform: none;
     }
   }
-}
-}
-
-@media #{$mq400} {
-.header {
-  &__ttl {
-    letter-spacing: 1px;
+  .header__ttl {
+    width: 50%;
   }
-  &__nav {
-    position: relative;
-    &:before {
-      content: "";
-      position: absolute;
-      top: 15px;
-      left: -20px;
-      width: 1px;
-      height: 10px;
-      background: $color-accent;
-    }
+  .header__account {
+    width: 50%;
+  }
+  .header__nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: $color-main;
+    box-shadow: 0 0 10px 0 rgba(0,0,0, .2);
+    z-index: 9;
     &-lists {
       li {
-        margin-left: 0;
-        &:first-child {
-          display: none;
+        a {
+          height: 40px;
+          font-size: 11px;
+          color: $color-text-link2;
+          &:hover {
+            background: $color-bk-hover1;
+          }
         }
       }
     }
   }
 }
+
+@media #{$mq800} {
+  .header__ttl {
+    &-logo {
+      width: 191px;
+      height: 36px;
+    }
+    &-svg {
+      transform: scale(.9);
+    }
+  }
 }
 
+@media #{$mq600} {
+  .header {
+    &__inner {
+      padding: 0 16px;
+    }
+  }
+}
 
+@media #{$mq500} {
+  .header {
+    height: 80px;
+    &__inner {
+      height: 80px;
+    }
+  }
+  .header__ttl {
+    &-logo {
+      width: 170px;
+      height: 32px;
+    }
+    &-svg {
+      transform: scale(.8);
+    }
+  }
+  .header__nav {
+    box-sizing: border-box;
+    padding: 0 30px;
+    &-lists {
+      li {
+        a {
+          width: 80px;
+          height: 40px;
+          font-size: 10px;
+          color: $color-text-link2;
+          &:hover {
+            background: $color-bk-hover1;
+          }
+        }
+      }
+    }
+  }
+  .header__account {
+    &-login {
+      margin-right: 0;
+      a {
+        font-size: 11px;
+      }
+    }
+  }
+  .header__account {
+    &-register {
+      a {
+        display: block;
+        width: auto;
+        height: auto;
+        margin-left: 20px;
+        font-size: 11px;
+        color: $color-main;
+        background: none;
+        &:hover {
+          background: none;
+          color: $color-text-hover1;
+        }
+      }
+    }
+  }
+  //== is-fixed
+  // .is-fixed {
+  //   .header {
+  //     &__inner {
+  //       height: 40px;
+  //     }
+  //   }
+  //   .header__ttl {
+  //     &-logo {
+  //       width: 128px;
+  //       height: 24px
+  //     }
+  //     &-svg {
+  //       transform: scale(.6);
+  //     }
+  //   }
+  //   .header__account {
+  //     &-register {
+  //       a {
+  //         height: auto;
+  //       }
+  //     }
+  //   }
+  // }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media #{$mq400} {
+  .header {
+    &__inner {
+      padding: 0 16px 0 8px;
+    }
+  }
+  .header__account {
+    &-register {
+      display: none;
+    }
+  }
+  .header__nav {
+    &-lists {
+      li {
+        a {
+          width: 60px;
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

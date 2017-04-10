@@ -1,0 +1,217 @@
+// ====================
+// * _card
+// ====================
+
+.c-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  // margin-top: 32px; ieのバグがあるためpadding-top:32pxでマージンをとっている
+  padding-top: 32px;
+  &__container {
+    position: relative;
+    display: block;
+    width: calc(50% - 20px);// 350px margin 40px
+    // height: 100%; safariで表示されなくなる
+    margin-top: 40px;
+    color: $color-text-main;
+    transition: $transition-base;
+    background: $color-bk-main;
+    // overflow: hidden;
+    // &:nth-last-child(2),
+    // &:nth-last-child(1) {
+    //   margin-bottom: 0;
+    // }
+    &:nth-of-type(1),
+    &:nth-of-type(2) {
+      margin-top: 0;
+    }
+    &:hover {
+      color: $color-text-main;
+      background: rgba($color-bk-link1, .1);
+    }
+    // .js-wave {
+    //   position: absolute;
+    //   width: 50px;
+    //   height: 50px;
+    //   margin-left: -25px;
+    //   margin-top: -25px;
+    //   border-radius: 50%;
+    //   background: $color-main;
+    //   animation: inAnim 1.5s ease forwards;
+    //   z-index: -1;
+    // }
+    box-sizing: border-box;
+    border: 1px solid $color-line6;
+  }
+  &__empty {
+    padding-bottom: 200px;
+    // font-size: 20px;
+  }
+}
+// @keyframes inAnim {
+//   0% {transform: scale(1); opacity: .4}
+//   100% {transform: scale(30); opacity: 0;}
+// }
+
+.c-card__item {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  &-details {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 24px 24px 0;
+  }
+  &-thumb {
+    order: -1;
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    &::before {
+      content: "";
+      display: block;
+      padding-top: 50%;
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      max-width: 100%;
+    }
+  }
+}
+
+.c-card__ttl {
+  margin-top: 16px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.c-card__desc {
+  order: -1;
+  display: flex;
+  justify-content: space-between;
+  &-cate {
+    box-sizing: border-box;
+    max-width: 60%;
+    padding: 5px 10px;
+    line-height: 1;
+    font-size: 11px;
+    white-space: nowrap;
+    color: $color-main;
+    border: 1px solid $color-main;
+    letter-spacing: 1px;
+  }
+  &-date {
+    max-width: 40%;
+    font-size: 10px;
+    color: $color-text-sub1;
+    letter-spacing: 1px;
+  }
+}
+
+.c-card__content {
+  margin: 16px 0;
+  text-align: justify;
+}
+
+.c-card__account {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 40px;
+  margin-top: auto;
+  padding: 0 4px;
+  font-size: 11px;
+  color: $color-text-sub1;
+}
+
+.c-card__desc {
+  &--bottom {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding: 0 4px;
+    font-size: 11px;
+    color: $color-text-sub1;
+    border-top: 1px solid $color-line6;
+  }
+  &-location {
+    .m-icon {
+      width: 8px;
+      height: 12px;
+      fill: $color-text-sub1;
+    }
+    span {
+      margin-left: 3px;
+    }
+  }
+  &-i {
+    position: relative;
+    margin-left: 16px;
+    &::before {
+      content: '/';
+      position: absolute;
+      top: 0;
+      left: -10px;
+    }
+  }
+}
+
+
+//== media query
+@media #{$mq820} {
+  .c-card {
+    &__container {
+      width: calc(50% - 10px);// 350px margin 20px
+    }
+  }
+}
+
+@media #{$mq600} {
+  .c-card {
+    flex-direction: column;
+    justify-content: flex-start;
+    &__container {
+      width: 100%;
+      &:nth-of-type(2) {
+        margin-top: 40px;
+      }
+    }
+  }
+}
+
+@media #{$mq400} {
+  .c-card__item {
+    &-details {
+      padding: 16px 16px 0;
+    }
+  }
+  .c-card__ttl {
+    margin-top: 16px;
+    font-size: 15px;
+  }
+  .c-card__content {
+    margin: 10px 0 0;
+    font-size: 12px;
+  }
+  .c-card__account {
+    font-size: 10px;
+    padding: 0;
+  }
+  .c-card__desc {
+    &--bottom {
+      font-size: 10px;
+      padding: 0;
+    }
+  }
+}

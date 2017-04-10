@@ -1,0 +1,50 @@
+// ====================
+// * _pagination
+// ====================
+
+.c-pagination {
+  margin-top: 64px;
+  &__container {
+    display: flex;
+    justify-content: center;
+    span,
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      width: 40px;
+      height: 40px;
+      margin-left: 8px;
+      font-family: $font-family-mon;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+    span {
+      color: $color-main;
+      border: 1px solid $color-main;
+    }
+    a {
+      color: $color-text-w;
+      background: $color-bk-link1;
+      transition: $transition-base;
+      &:hover {
+        background: $color-bk-hover1;
+      }
+    }
+  }
+}
+
+
+//== media query
+@media #{$mq600} {
+  .c-pagination {
+    &__container {
+      span,
+      a {
+        font-size: 11px;
+      }
+    }
+  }
+}
