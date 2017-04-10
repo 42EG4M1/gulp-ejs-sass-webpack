@@ -3,8 +3,9 @@ const runSequence = require('run-sequence');
 
 gulp.task('default', (callback) => {
   runSequence(
-    ['ejs', 'sass', 'js', 'imagemin'],
+    ['ejs', 'sassAll', 'js', 'imagemin'],
     'bs',
+    'del',
     'watch',
     callback
   );

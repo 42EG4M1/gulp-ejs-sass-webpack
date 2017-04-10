@@ -10,6 +10,11 @@ module.exports = {
     dest  : './dist/'
   },
 
+  del: {
+    src  : `${dir.src}`,
+    dest : `${dir.dest}`
+  },
+
   ejs: {
     src   : `${dir.src}ejs/*.ejs`,// `!${dir.src}ejs/**/_*.ejs`],
     dest  : './dist/',
@@ -18,6 +23,7 @@ module.exports = {
 
   sass: {
     src   : `${dir.src}styles/**/*.scss`,
+    font  : `${dir.src}styles/_webfonts.css`,
     dest  : `${dir.dest}styles/`,
     watch : `${dir.src}styles/**/*.scss`
   },
@@ -46,7 +52,17 @@ module.exports = {
     iconPath : './assets/images/favicons/',
     srcFire  : `${dir.src}ejs/`
 //    markupFire : './dist/'
+  },
+
+  yakuhanjps: {
+    src   : 'node_modules/yakuhanjp/dist/fonts/YakuHanJPs/',
+    dest  : `${dir.dest}fonts/YakuHanJPs/`
   }
+
+  // yakuhanjp: {
+  //   src   : 'node_modules/yakuhanjp/dist/fonts/YakuHanJP/',
+  //   dest  : `${dir.dest}fonts/YakuHanJP/`
+  // }
 
   // copy: {
   //   src   : ['./src/*.+(html|php|css|png)', './src/inc/*.+(html|php)'],
