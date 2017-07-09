@@ -7,7 +7,7 @@ gulp.task('watch', () => {
     gulp.start(['ejs']);
   });
   $.watch(config.sass.watch, function(event) {
-    gulp.start(['sass']);
+    gulp.start(['sassAll']);
   });
   $.watch(config.js.watch, function(event) {
     gulp.start(['js']);
